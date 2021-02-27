@@ -9,6 +9,8 @@ class AccessManager:
     def ValidateDNI(self, DNI):
         # PLEASE INCLUDE HERE THE CODE FOR VALIDATING THE DNI
         # RETURN TRUE IF THE DNI IS RIGHT, OR FALSE IN OTHER CASE
+
+
         return True
 
     def ReadaccessrequestfromJSON(self, fi):

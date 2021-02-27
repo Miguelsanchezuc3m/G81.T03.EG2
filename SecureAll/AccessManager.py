@@ -6,12 +6,35 @@ class AccessManager:
     def __init__(self):
         pass
 
-    def ValidateDNI(self, DNI):
-        # PLEASE INCLUDE HERE THE CODE FOR VALIDATING THE DNI
-        # RETURN TRUE IF THE DNI IS RIGHT, OR FALSE IN OTHER CASE
 
+    def ValidateDNI(self, DNI):
+
+        letra = DNI[-1]
+        numero = DNI[:-1]
+
+        if numero.isnumeric() == False:
+            return False
+
+        if len(numero) > 8 or len(numero) < 7:
+            return False
+
+        if len(numero) == 8:
+            lista = ["T","R","W","A","G","M","Y","F","P","D","X","B","N","J","Z","S","Q","V"
+                 ,"H","L","C","K","E"]
+            resto = int(numero) % 23
+            if letra != lista[resto]:
+                return False
+
+        if len(numero) == 7:
+            lista = ["X","Y","Z"]
+            resto = int(numero) % 3
+            if letra != lista[resto]:
+                return False
 
         return True
+
+
+
 
     def ReadaccessrequestfromJSON(self, fi):
 

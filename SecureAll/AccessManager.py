@@ -1,18 +1,24 @@
+"""Modulo X"""
+
+
 import json
 from .AccessManagementException import AccessManagementException
 from .AccessRequest import AccessRequest
 
 class AccessManager:
+    """Aqui se encontraria el comentario del funcionamiento de la clase."""
     def __init__(self):
         pass
 
 
-    def ValidateDNI(self, DNI):
+    def ValidateDNI(self, dni):
+        """Este método comprueba que el formato del DNI es válido y la letra se corresponde con la
+        regulación vigente"""
 
-        letra = DNI[-1]
-        numero = DNI[:-1]
+        letra = dni[-1]
+        numero = dni[:-1]
 
-        if numero.isnumeric() == False:
+        if not numero.isnumeric():
             return False
 
         if len(numero) > 8 or len(numero) < 7:
@@ -33,27 +39,25 @@ class AccessManager:
 
         return True
 
-
-
-
-    def ReadaccessrequestfromJSON(self, fi):
+    def ReadaccessrequestfromJSON(self, variable_fi):
+        """Comentario"""
 
         try:
-            with open(fi) as f:
-                DATA = json.load(f)
-        except FileNotFoundError as e:
-            raise AccessManagementException("Wrong file or file path") from e
-        except json.JSONDecodeError as e:
-            raise AccessManagementException("JSON Decode Error - Wrong JSON Format") from e
+            with open(variable_fi) as variable_f:
+                data = json.load(variable_f)
+        except FileNotFoundError as variable_e:
+            raise AccessManagementException("Wrong file or file path") from variable_e
+        except json.JSONDecodeError as variable_e:
+            raise AccessManagementException("JSON Decode Error - Wrong JSON Format") from variable_e
 
 
         try:
-            idDoc = DATA["id"]
-            name = DATA["name"]
-            req = AccessRequest(idDoc, name)
-        except KeyError as e:
-            raise AccessManagementException("JSON Decode Error - Invalid JSON Key") from e
-        if not self.ValidateDNI(idDoc):
+            id_doc = data["id"]
+            name = data["name"]
+            req = AccessRequest(id_doc, name)
+        except KeyError as variable_e:
+            raise AccessManagementException("JSON Decode Error - Invalid JSON Key") from variable_e
+        if not self.ValidateDNI(id_doc):
             raise AccessManagementException("Invalid DNI")
 
         # Close the file

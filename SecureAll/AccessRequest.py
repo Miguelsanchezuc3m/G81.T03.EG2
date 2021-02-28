@@ -1,27 +1,32 @@
+"""Modulo X"""
+
+
 import json
 from datetime import datetime
-import pandas
 
 class AccessRequest:
-    def __init__(self, idDocument, fullName):
-        self.__name = fullName
-        self.__idDocument = idDocument
+    """Aqui se encontraria el comentario del funcionamiento de la clase."""
+    def __init__(self, id_document, full_name):
+        self.__name = full_name
+        self.__id_document = id_document
         justnow = datetime.utcnow()
-        self.__timeStamp = datetime.timestamp(justnow)
+        self.__time_stamp = datetime.timestamp(justnow)
 
     def __str__(self):
         return "AccessRequest:" + json.dumps(self.__dict__)
 
     @property
-    def Name(self):
+    def name(self):
+        """Comentario"""
         return self.__name
-    @Name.setter
-    def Name(self, value):
+    @name.setter
+    def name(self, value):
         self.__name = value
 
     @property
-    def idDocument(self):
-        return self.__idDocument
-    @Name.setter
-    def idDocument(self,value):
-        self.__idDocument = value
+    def id_document(self):
+        """Comentario"""
+        return self.__id_document
+    @name.setter
+    def id_document(self, value):
+        self.__id_document = value

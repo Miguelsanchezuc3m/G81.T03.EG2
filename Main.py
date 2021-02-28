@@ -1,7 +1,10 @@
+"""Modulo X"""
+
+
 from SecureAll import AccessManager
-from SecureAll import AccessRequest
 
 def main():
+    """Comentario"""
     mng = AccessManager()
     res = mng.ReadaccessrequestfromJSON("test.json")
     print(res)

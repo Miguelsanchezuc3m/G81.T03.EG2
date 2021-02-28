@@ -27,6 +27,6 @@ class AccessRequest:
     def id_document(self):
         """Comentario"""
         return self.__id_document
-    @name.setter
+    @id_document.setter
     def id_document(self, value):
         self.__id_document = value
